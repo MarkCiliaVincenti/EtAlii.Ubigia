@@ -8,11 +8,7 @@ using AsyncKeyedLock;
 public class LockingStorageSerializer : IStorageSerializer
 {
     private readonly IStorageSerializer _decoree;
-    private readonly AsyncKeyedLocker<string> _asyncKeyedLocker = new(o =>
-    {
-        o.PoolSize = 20;
-        o.PoolInitialFill = 1;
-    });
+    private readonly AsyncKeyedLocker<string> _asyncKeyedLocker = new();
 
     public LockingStorageSerializer(IStorageSerializer decoree)
     {
